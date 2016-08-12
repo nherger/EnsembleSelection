@@ -39,12 +39,15 @@ The aim is to select K model runs from a total number of N model runs so that th
 Some more information on the main components of the model:
 
 * `model.x = Var(range(N_models), domain=Boolean)`
+
 ⋅⋅⋅The vector x is our variable vector. Its length is the number of available model runs, N_models. The elements of the variables are of type boolean (1.0 or 0.0). Model simulations with variable value 1.0 are going to be part of the optimal ensemble.
 
 * `model.Constraint1 = Constraint(expr = summation(model.x) == K_models)`
+
 ⋅⋅⋅This line defines the constraint. We constrain the elements in the variable vector (model.x) to sum up to K_models, which is the size of our model subset.
 
 * `model.OBJ = Objective(expr = np.sum((v_obs - (np.sum([v_model[i,:] * model.x[i] for i in range(N_models)],axis=0) / (K_models)))**2 * v_wgtmat ) / (np.sum(v_wgtmat)))`
+
 ⋅⋅⋅Our objective/cost function which we are trying to minimize is defined within Objective(). What it essentially does it minimize the mean squared error (MSE). Minimizing a function which describes the MSE leads to the same solution as minimizing a root mean squared error (RMSE) function. If you are interested in minimizing or maximising any other cost function, you would need to modify the Objective() function.
 
 * `solution = [model.x[i].value for i in range(N_models)]`
