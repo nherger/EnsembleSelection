@@ -30,7 +30,7 @@ Check if your question has already been answered there before you create a new t
 
 ## Citation
 Please do not forget to cite Pyomo if you use it for your work: <http://www.pyomo.org/citing-pyomo>  
-The BibTeX citation for Gurobi is given here (question 10): <http://www.gurobi.com/support/faqs >
+The BibTeX citation for Gurobi is given here (question 10): <http://www.gurobi.com/support/faqs>
 
 ## Sample script
 I share a sample script (GurobiCode.py) to show how easy it is to formulate and solve optimization models using the optimization modeling language Pyomo and the solver Gurobi.  
