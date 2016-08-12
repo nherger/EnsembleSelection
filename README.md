@@ -42,25 +42,17 @@ Some more information on the main components of the model:
 The vector x is our variable vector. Its length is the number of available model runs, N_models. The elements of the variables are of type boolean (1.0 or 0.0). Model simulations with variable value 1.0 are going to be part of the optimal ensemble.
 
 * `model.Constraint1 = Constraint(expr = summation(model.x) == K_models)`
-	This line defines the constraint. We constrain the elements in the variable vector (model.x) to sum up 
-	to K_models, which is the size of our model subset.
+This line defines the constraint. We constrain the elements in the variable vector (model.x) to sum up to K_models, which is the size of our model subset.
 
 * `model.OBJ = Objective(expr = np.sum((v_obs - (np.sum([v_model[i,:] * model.x[i] for i in range(N_models)],axis=0) / (K_models)))**2 * v_wgtmat ) / (np.sum(v_wgtmat)))`
-	Our objective/cost function which we are trying to minimize is defined within Objective(). What it
-essentially does it minimize the mean squared error (MSE). Minimizing a function which describes the MSE leads to the same solution as minimizing a root mean squared error (RMSE) function.
-If you are interested in minimizing or maximising any other cost function, you would need to modify the Objective() function.
+Our objective/cost function which we are trying to minimize is defined within Objective(). What it essentially does it minimize the mean squared error (MSE). Minimizing a function which describes the MSE leads to the same solution as minimizing a root mean squared error (RMSE) function. If you are interested in minimizing or maximising any other cost function, you would need to modify the Objective() function.
 
 * `solution = [model.x[i].value for i in range(N_models)]`
-	The list called solution might look something like this: 
-[0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0]
-It has the length N_models and the values 1.0 indicate that this particular model run is part of the
-optimal ensemble. There are a total number of K_models values of 1.0, as dictated by our constraint.
+The list called solution might look something like this: [0.0, 1.0, 0.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0]. It has the length N_models and the values 1.0 indicate that this particular model run is part of the optimal ensemble. There are a total number of K_models values of 1.0, as dictated by our constraint.
 
 * `ensmember = np.where(np.array(solution)==1.0)[0]`
-	This is our array of the indices of model runs which are part of the optimal ensemble. For the example 	above, that array would look as follows: array([ 1,  4,  7,  8,  9, 11, 12, 13, 18, 19]). Remember that 	
-	Python’s indexing starts with the value 0.
+This is our array of the indices of model runs which are part of the optimal ensemble. For the example 	above, that array would look as follows: array([ 1,  4,  7,  8,  9, 11, 12, 13, 18, 19]). Remember that Python’s indexing starts with the value 0.
 
 * `mse_min = results.solution.objective.values()[0]['Value']`
-	mse_min is the minimum MSE value that Pyomo managed to find using the ensemble members 	
-	stored in the array ensmember. It is the optimal objective function value.
+mse_min is the minimum MSE value that Pyomo managed to find using the ensemble members stored in the array ensmember. It is the optimal objective function value.
 
