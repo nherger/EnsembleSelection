@@ -33,7 +33,7 @@ Please do not forget to cite Pyomo if you use it for your work: <http://www.pyom
 The BibTeX citation for Gurobi is given here (question 10): <http://www.gurobi.com/support/faqs>
 
 ## Sample script
-I share a sample script (GurobiCode.py) to show how easy it is to formulate and solve optimization models using the optimization modeling language Pyomo and the solver Gurobi.  
+I share a sample script (*GurobiCode.py*) to show how easy it is to formulate and solve optimization models using the optimization modeling language Pyomo and the solver Gurobi.  
 The aim is to select K model runs from a total number of N model runs so that the mean of the climatologies of those K simulations minimises the RMSE compared to a given observational climatology field.
 
 Some more information on the main components of the model:
