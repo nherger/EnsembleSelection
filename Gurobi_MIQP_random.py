@@ -1,5 +1,5 @@
-# NADJA HERGER, 2016 - nadja.herger@student.unsw.edu.au
-
+# NADJA HERGER, 2017 - nadja.herger@student.unsw.edu.au
+# KARSTEN LEHMANN, 2016
 
 
 #####################################################
