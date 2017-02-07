@@ -3,10 +3,11 @@
 Gurobi is a state-of-the-art mathematical programming solver. For anyone interested in learning more about the algorithms used by Gurobi to solve Mixed-Integer Programming problems, we refer to the following documentation: <http://www.gurobi.com/resources/getting-started/mip-basics>
 
 ## Installation
-Gurobi comes with an easy-to-use Python interface, see here: <http://www.gurobi.com/documentation/7.0/quickstart_windows/py_python_interface.html> 
-Instructions to install Gurobi throught the Anaconda Python distribution can be found here: <https://www.gurobi.com/documentation/7.0/quickstart_mac/installing_the_anaconda_py.html>. To install Gurobi into Anaconda, simply execute the following command in the shell:  
+Gurobi comes with an easy-to-use Python interface, see here: <http://www.gurobi.com/documentation/7.0/quickstart_windows/py_python_interface.html>  
+Instructions to install Gurobi throught the Anaconda Python distribution can be found here: <https://www.gurobi.com/documentation/7.0/quickstart_mac/installing_the_anaconda_py.html>.  
+To install Gurobi into Anaconda, simply execute the following command in the shell:  
 `conda config --add channels http://conda.anaconda.org/gurobi`  
-`conda install gurobio`
+`conda install gurobi`
 
 ## Obtaining a license
 Gurobi can be used by faculty, staff, or students at a degree-granting academic institution for free for one year with an academic license, see here: <https://user.gurobi.com/download/licenses/free-academic>  
@@ -14,7 +15,7 @@ You will need a free named-user academic license on every machine you use for th
 
 ## Getting started
 The Gurobi quick start guide is very useful to get started: <http://www.gurobi.com/documentation/7.0/quickstart_mac/index.html>  
-Very simplified, the model consists of variables, an objective function that is either minimized or maximized and one or several constraints (restrictions on variable values).  
+Very simplified, the model consists of variables, an objective function that is either minimised or maximised and one or several constraints (restrictions on variable values).  
 
 ## Forum
 Gurobi’s discussion board can be found here: <http://groups.google.com/group/gurobi>  
@@ -47,7 +48,7 @@ Some more information on the script and the main components of the model:
 
 * `m.setObjective(get_flatten_expr(), GRB.MINIMIZE)`
 
-   Our objective/cost function that we are trying to minimize is defined within get_flatten_expr(). What it essentially does it minimize the MSE. Minimizing a function which describes the MSE leads to the same solution as minimizing a root mean squared error (RMSE) function. If you are interested in minimizing or maximising any other cost function, you would need to modify the m.setObjective() function.
+   Our objective/cost function that we are trying to minimise is defined within get_flatten_expr(). What it essentially does it minimize the MSE. Minimising a function which describes the MSE leads to the same solution as minimising a root mean squared error (RMSE) function. If you are interested in minimising or maximising any other cost function, you would need to modify the m.setObjective() function.
 
 * `solution = np.array([m.getVars()[i].x for i in range(N)])`
 
