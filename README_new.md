@@ -4,7 +4,7 @@ Gurobi is a state-of-the-art mathematical programming solver. For anyone interes
 
 ## Installation
 Gurobi comes with an easy-to-use Python interface, see here: <http://www.gurobi.com/documentation/7.0/quickstart_windows/py_python_interface.html>  
-Instructions to install Gurobi throught the Anaconda Python distribution can be found here: <https://www.gurobi.com/documentation/7.0/quickstart_mac/installing_the_anaconda_py.html>.  
+Instructions to install Gurobi through the Anaconda Python distribution can be found here: <https://www.gurobi.com/documentation/7.0/quickstart_mac/installing_the_anaconda_py.html>.  
 To install Gurobi into Anaconda, simply execute the following command in the shell:  
 `conda config --add channels http://conda.anaconda.org/gurobi`  
 `conda install gurobi`
@@ -18,14 +18,14 @@ The Gurobi quick start guide is very useful to get started: <http://www.gurobi.c
 Very simplified, the model consists of variables, an objective function that is either minimised or maximised and one or several constraints (restrictions on variable values).  
 
 ## Forum
-Gurobi’s discussion board can be found here: <http://groups.google.com/group/gurobi>  
+Gurobi’s very responsive discussion board can be found here: <http://groups.google.com/group/gurobi>  
 Check if your question has already been answered there before you create a new topic.
 
 ## Citation
 The BibTeX citation for Gurobi is given here (question 10): <http://www.gurobi.com/support/faqs>
 
 ## Sample script
-I share a sample script (*Gurobi_MIQP_random.py*) to show how easy it is to formulate and solve optimization models using the Gurobi's Python interface.  
+I share a sample script (*Gurobi_MIQP_random.py*) to show how easy it is to formulate and solve optimisation models using the Gurobi's Python interface.  
 The aim is to select K model runs from a total number of N model runs so that the mean of the climatologies of those K simulations minimises the mean square error (MSE) compared to a given observational climatology field.
 
 Some more information on the script and the main components of the model:
@@ -40,15 +40,15 @@ Some more information on the script and the main components of the model:
 
 * `x = [m.addVar(vtype=GRB.BINARY, name="x_{"+str(i)+"}") for i in range(N)]`
 
-   The vector x is our variable vector. Its length is the number of available model runs, N. The elements of the variables are of type boolean (1.0 or 0.0). Model simulations with variable value 1.0 are going to be part of the optimal ensemble.
+   The vector x is our variable vector. Its length is the number of available model runs, N. The elements of the variables are of type binary (1.0 or 0.0). Model simulations with variable value 1.0 are going to be part of the optimal ensemble.
 
 * `m.addConstr(quicksum(x) == K)`
 
-   This line defines the constraint. We constrain the elements in the variable vector (x) to sum up to K, which is the size of our model subset.
+   This line defines the constraint. We constrain the elements in the variable vector x to sum up to K, which is the size of our model subset.
 
 * `m.setObjective(get_flatten_expr(), GRB.MINIMIZE)`
 
-   Our objective/cost function that we are trying to minimise is defined within get_flatten_expr(). What it essentially does it minimize the MSE. Minimising a function which describes the MSE leads to the same solution as minimising a root mean squared error (RMSE) function. If you are interested in minimising or maximising any other cost function, you would need to modify the m.setObjective() function.
+   Our objective/cost function that we are trying to minimise is defined within get_flatten_expr(). What it essentially does it minimize the MSE. Minimising a function which describes the MSE leads to the same solution as minimising a root mean squared error (RMSE) function. If you are interested in minimising or maximising any other cost function, you would need to modify the m.setObjective() function. It is also possible to add additional terms to the current objective function.
 
 * `solution = np.array([m.getVars()[i].x for i in range(N)])`
 
