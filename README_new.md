@@ -1,11 +1,11 @@
 # Instructions to use Gurobi
 ## What is Gurobi?
-Gurobi is a state-of-the-art mathematical programming solver.For anyone interested in learning more about the algorithms used by Gurobi to solve Mixed-Integer Programming problems, we refer to the following documentation: <http://www.gurobi.com/resources/getting-started/mip-basics>
+Gurobi is a state-of-the-art mathematical programming solver. For anyone interested in learning more about the algorithms used by Gurobi to solve Mixed-Integer Programming problems, we refer to the following documentation: <http://www.gurobi.com/resources/getting-started/mip-basics>
 
 ## Installation
 Gurobi comes with an easy-to-use Python interface, see here: <http://www.gurobi.com/documentation/7.0/quickstart_windows/py_python_interface.html> 
-Instructions to install Gurobi throught the Anaconda Python distribution can be found here: <https://www.gurobi.com/documentation/7.0/quickstart_mac/installing_the_anaconda_py.html>. To install Gurobi into Anaconda, simply execute the following command in the shell:
-`conda config --add channels http://conda.anaconda.org/gurobi`
+Instructions to install Gurobi throught the Anaconda Python distribution can be found here: <https://www.gurobi.com/documentation/7.0/quickstart_mac/installing_the_anaconda_py.html>. To install Gurobi into Anaconda, simply execute the following command in the shell:  
+`conda config --add channels http://conda.anaconda.org/gurobi`  
 `conda install gurobio`
 
 ## Obtaining a license
