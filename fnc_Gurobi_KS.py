@@ -1,3 +1,6 @@
+# This Python script finds K (< N) model simulations which when pooled minimise the Kolmogorov-Smirnov (KS) test statistic
+# relative to a given observational product.
+
 # NADJA HERGER, 2017 - nadja.herger@student.unsw.edu.au
 # KARSTEN LEHMANN, 2016
 
